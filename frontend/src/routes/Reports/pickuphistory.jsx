@@ -10,6 +10,19 @@ const PickupHistory = () => {
         { id: 5, date: '2023-10-20', itemType: 'E-Waste', quantity: 5, status: 'Cancelled' },
     ];
 
+    const getStatusEmoji = (status) => {
+        switch (status) {
+            case 'Completed':
+                return '✅'; // Check mark for completed
+            case 'Pending':
+                return '⏳'; // Hourglass for pending
+            case 'Cancelled':
+                return '❌'; // Cross mark for cancelled
+            default:
+                return '';
+        }
+    };
+
     return (
         <div className="dark:text-white p-4">
             <h1 className="text-2xl font-bold mb-4">Pickup History</h1>
