@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const initialState = {
-    theme: "system",
+    theme: "light",
     setTheme: () => null,
 };
 

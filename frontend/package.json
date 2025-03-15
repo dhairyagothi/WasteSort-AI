@@ -12,10 +12,15 @@
   "dependencies": {
     "@uidotdev/usehooks": "^2.4.1",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^12.5.0",
     "lucide-react": "^0.441.0",
     "react": "^18.3.1",
+    "react-calendar": "^5.1.0",
+    "react-datepicker": "^8.2.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
+    "react-time-picker": "^7.0.0",
     "recharts": "^2.12.7",
     "tailwind-merge": "^2.5.2"
   },
