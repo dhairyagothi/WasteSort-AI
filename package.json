@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/dhairyagothi/WasteSort-AI/issues"
   },
-  "homepage": "https://github.com/dhairyagothi/WasteSort-AI#readme"
+  "homepage": "https://github.com/dhairyagothi/WasteSort-AI#readme",
+  "dependencies": {
+    "react-icons": "^5.5.0"
+  }
 }

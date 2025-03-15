@@ -1,6 +1,15 @@
 import React from 'react';
+import { FaStar } from 'react-icons/fa';
 
 const PersonalReports = () => {
+        const renderStars = (rating) => {
+            const stars = [];
+            for (let i = 0; i < 5; i++) {
+                stars.push(<FaStar key={i} className={i < rating ? 'text-yellow-400' : 'text-gray-400'} />);
+            }
+            return stars;
+        };
+
     return (
         <div className="dark:text-white p-4">
             <h1 className="text-2xl font-bold mb-4">Personal Reports</h1>
