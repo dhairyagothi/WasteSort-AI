@@ -1,4 +1,3 @@
-export default pickuphistory;
 import React from 'react';
 
 const PickupHistory = () => {
