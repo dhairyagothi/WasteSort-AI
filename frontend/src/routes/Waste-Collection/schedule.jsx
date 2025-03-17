@@ -8,6 +8,7 @@ const SchedulePage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState("10:00 AM");
   const [schedules, setSchedules] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   // Default schedule timings
   useEffect(() => {
@@ -35,11 +36,22 @@ const SchedulePage = () => {
 
   const groupedSchedules = groupSchedules();
 
+  // Update isMobile state on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen flex bg-green-100 p-8">
+    <div className={`min-h-screen flex bg-green-100 p-8 ${isMobile ? 'flex-col' : 'flex-row'}`}>
       {/* Left Panel - Waste Collection Schedule */}
       <motion.div
-        className="w-1/2 p-6 bg-white rounded-2xl shadow-md"
+        className={`w-full p-6 bg-white rounded-2xl shadow-md ${isMobile ? 'mb-6' : 'mr-6'}`}
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
       >
@@ -61,7 +73,7 @@ const SchedulePage = () => {
 
       {/* Right Panel - Calendar & Notification */}
       <motion.div
-        className="w-1/2 p-6 bg-white rounded-2xl shadow-md ml-6"
+        className={`w-full p-6 bg-white rounded-2xl shadow-md ${isMobile ? 'mt-6' : 'ml-6'}`}
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
       >
