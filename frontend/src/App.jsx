@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { ThemeProvider } from "@/contexts/theme-context";
+import { LanguageProvider } from "@/contexts/language-context";
 import Layout from "@/routes/layout";
 import DashboardPage from "@/routes/dashboard/page";
 import Progress from "@/routes/dashboard/progress";
@@ -18,6 +19,8 @@ import Profile from "@/routes/Account/profile";
 import Settings from "@/routes/Account/settings";
 import Contact from "@/routes/Help/contact";
 import Faq from "@/routes/Help/Faq";
+import SignIn from "./routes/Account/signin";
+import SignUp from "./routes/Account/signup";
 
 function App() {
     const router = createBrowserRouter([
@@ -89,13 +92,23 @@ function App() {
                     path: "contact-support",
                     element: <Contact />,
                 },
+                {
+                    path :"sign-in",
+                    element: <SignIn />,
+                },
+                {
+                    path :"sign-up",
+                    element: <SignUp />,
+                }
             ],
         },
     ]);
 
     return (
         <ThemeProvider storageKey="theme">
-            <RouterProvider router={router} />
+            <LanguageProvider>
+                <RouterProvider router={router} />
+            </LanguageProvider>
         </ThemeProvider>
     );
 }

@@ -1,6 +1,7 @@
 // const Faq = () => {
 import { useState } from "react";
 import { useTheme } from "@/hooks/use-theme";
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
     
 const faqs = [
     {
@@ -44,18 +45,23 @@ const FAQ = () => {
                 <p className="text-lg text-gray-700 dark:text-gray-300 mb-12 text-center">
                     Find answers to common questions about Waste Sort AI.
                 </p>
-                <div className="space-y-6">
+                <div className="space-y-4">
                     {faqs.map((faq, index) => (
-                        <div key={index} className="p-6 bg-green-100 dark:bg-green-800 rounded-lg shadow-lg cursor-pointer"
-                            onClick={() => toggleFAQ(index)}>
-                            <h2 className="text-xl font-semibold text-green-800 dark:text-green-100 flex justify-between items-center">
-                                {faq.question}
+                        <div 
+                            key={index} 
+                            className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md cursor-pointer transition-transform transform hover:scale-105"
+                            onClick={() => toggleFAQ(index)}
+                        >
+                            <div className="flex justify-between items-center">
+                                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                                    {faq.question}
+                                </h2>
                                 <span className="text-green-600 dark:text-green-300 text-2xl">
-                                    {openIndex === index ? "−" : "+"}
+                                    {openIndex === index ? <ChevronUpIcon className="h-6 w-6" /> : <ChevronDownIcon className="h-6 w-6" />}
                                 </span>
-                            </h2>
+                            </div>
                             {openIndex === index && (
-                                <p className="mt-2 text-gray-700 dark:text-gray-300">
+                                <p className="mt-4 text-gray-700 dark:text-gray-300">
                                     {faq.answer}
                                 </p>
                             )}

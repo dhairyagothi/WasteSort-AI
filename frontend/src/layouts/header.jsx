@@ -1,6 +1,7 @@
 import { useTheme } from "@/hooks/use-theme";
+import { useTranslation } from "@/hooks/use-translation";
 
-import { Bell, ChevronsLeft, Moon, Search, Sun } from "lucide-react";
+import { Bell, ChevronsLeft, Moon, Search, Sun, Globe } from "lucide-react";
 
 import profileImg from "@/assets/profile-image.jpg";
 
@@ -8,6 +9,7 @@ import PropTypes from "prop-types";
 
 export const Header = ({ collapsed, setCollapsed }) => {
     const { theme, setTheme } = useTheme();
+    const { language, changeLanguage, supportedLanguages, getCurrentLanguage } = useTranslation();
 
     return (
         <header className="relative z-10 flex h-[60px] items-center justify-between bg-white px-4 shadow-md transition-colors dark:bg-slate-900">
@@ -33,6 +35,22 @@ export const Header = ({ collapsed, setCollapsed }) => {
                 </div>
             </div>
             <div className="flex items-center gap-x-3">
+                {/* Language Selector */}
+                <div className="relative">
+                    <select
+                        value={language}
+                        onChange={(e) => changeLanguage(e.target.value)}
+                        className="btn-ghost size-10 text-sm bg-transparent border-none outline-none cursor-pointer appearance-none text-center"
+                        title="Select Language"
+                    >
+                        {supportedLanguages.map((lang) => (
+                            <option key={lang.code} value={lang.code}>
+                                {lang.flag}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                
                 <button
                     className="btn-ghost size-10"
                     onClick={() => setTheme(theme === "light" ? "dark" : "light")}

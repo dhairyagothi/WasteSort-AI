@@ -10,13 +10,31 @@ const SchedulePage = () => {
   const [schedules, setSchedules] = useState([]);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  // Default schedule timings
+  // Default schedule timings with Suchita's enhanced features
   useEffect(() => {
     const today = new Date();
     const sampleSchedules = [
-      { date: format(today, "yyyy-MM-dd"), collectionType: "Household Waste" },
-      { date: format(new Date(today.setDate(today.getDate() + 1)), "yyyy-MM-dd"), collectionType: "Recyclables" },
-      { date: format(new Date(today.setDate(today.getDate() + 2)), "yyyy-MM-dd"), collectionType: "Organic Waste" },
+      { 
+        date: format(today, "yyyy-MM-dd"), 
+        collectionType: "Household Waste",
+        area: "Ward 12-A",
+        optimizedRoute: "Route A-3",
+        vehicleId: "VH-001"
+      },
+      { 
+        date: format(new Date(today.setDate(today.getDate() + 1)), "yyyy-MM-dd"), 
+        collectionType: "Recyclables",
+        area: "Ward 12-B",
+        optimizedRoute: "Route B-1",
+        vehicleId: "VH-002"
+      },
+      { 
+        date: format(new Date(today.setDate(today.getDate() + 2)), "yyyy-MM-dd"), 
+        collectionType: "Organic Waste",
+        area: "Ward 12-C",
+        optimizedRoute: "Route C-2",
+        vehicleId: "VH-003"
+      },
     ];
     setSchedules(sampleSchedules);
   }, []);

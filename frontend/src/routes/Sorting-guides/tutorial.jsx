@@ -54,12 +54,12 @@ const Tutorials = () => {
                 <h1 className="text-4xl font-bold mb-8 text-center 
                     bg-gradient-to-r from-green-600 to-emerald-700 bg-clip-text text-transparent
                     dark:from-green-400 dark:to-emerald-300">
-                    Smart Waste Sorting Guide
+                    Suchita Waste Segregation Guide
                 </h1>
         
                 <p className="text-lg text-gray-700 dark:text-gray-200 mb-12 text-center max-w-2xl mx-auto">
-                    Discover simple steps to sort waste like a pro! Learn how your daily efforts in separating 
-                    recyclables can make a big difference in reducing pollution and conserving resources.
+                    Master sustainable waste management with Suchita's comprehensive tutorials! Learn AI-verified 
+                    segregation techniques that help municipalities optimize collection and boost recycling rates.
                 </p>
         
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

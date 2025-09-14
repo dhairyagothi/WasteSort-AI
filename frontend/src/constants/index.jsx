@@ -141,18 +141,50 @@ export const navbarLinks = [
 ];
 
 export const overviewData = [
-    { name: "Jan", total: 1800 },
-    { name: "Feb", total: 2200 },
-    { name: "Mar", total: 1300 },
-    { name: "Apr", total: 4700 },
-    { name: "May", total: 2500 },
-    { name: "Jun", total: 6200 },
-    { name: "Jul", total: 2800 },
-    { name: "Aug", total: 5100 },
-    { name: "Sep", total: 2300 },
-    { name: "Oct", total: 4300 },
-    { name: "Nov", total: 1700 },
-    { name: "Dec", total: 2700 },
+    { name: "Jan", total: 2400 },
+    { name: "Feb", total: 2800 },
+    { name: "Mar", total: 1900 },
+    { name: "Apr", total: 5200 },
+    { name: "May", total: 3100 },
+    { name: "Jun", total: 7800 },
+    { name: "Jul", total: 3500 },
+    { name: "Aug", total: 6300 },
+    { name: "Sep", total: 2900 },
+    { name: "Oct", total: 5100 },
+    { name: "Nov", total: 2200 },
+    { name: "Dec", total: 3400 },
+];
+
+// Suchita-specific constants
+export const PROJECT_INFO = {
+    name: "Suchita",
+    fullName: "Sustainable Urban Classification Hub Integrated with Technology and AI",
+    description: "A multilingual AI-powered web platform designed for citizens and municipalities to streamline waste management",
+    features: {
+        citizen: [
+            "AI Verification of waste sorting",
+            "Educational resources and tutorials",
+            "Real-time pickup tracking with GPS",
+            "Issue reporting and feedback system",
+            "Multilingual platform support"
+        ],
+        municipal: [
+            "Centralized dashboard for operations",
+            "AI-driven route optimization",
+            "Automated data logging",
+            "Real-time monitoring and reports",
+            "Complaint management system"
+        ]
+    }
+};
+
+export const SUPPORTED_LANGUAGES = [
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'hi', name: 'हिंदी', flag: '🇮🇳' },
+    { code: 'mr', name: 'मराठी', flag: '🇮🇳' },
+    { code: 'gu', name: 'ગુજરાતી', flag: '🇮🇳' },
+    { code: 'ta', name: 'தமிழ்', flag: '🇮🇳' },
+    { code: 'te', name: 'తెలుగు', flag: '🇮🇳' }
 ];
 
 

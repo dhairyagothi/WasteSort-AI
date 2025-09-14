@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 
 import { navbarLinks } from "@/constants";
 
-import logoLight from "@/assets/logo.svg";
-import logoDark from "@/assets/logo.svg";
+import logoLight from "@/assets/logo.png";
+import logoDark from "@/assets/logo.png";
 
 import { cn } from "@/utils/cn";
 
@@ -20,22 +20,22 @@ export const Sidebar = forwardRef(({ collapsed }, ref) => {
                 collapsed ? "max-md:-left-full" : "max-md:left-0",
             )}
         >
-            <div className="flex gap-x-3 p-3 items-center">
+            <div className="flex items-center p-3 gap-x-3">
                 <img
                     src={logoLight}
-                    alt="WasteSort AI"
+                    alt="Suchita"
                     style={{height: 50,
                         width: 50}}
                     className="dark:hidden"
                 />
                 <img
                     src={logoDark}
-                    alt="WasteSort AI"
+                    alt="Suchita"
                     style={{height: 50,
                         width: 50}}
                     className="hidden dark:block"
                 />
-                {!collapsed && <p className="text-lg font-medium items-center text-slate-900 transition-colors dark:text-slate-50">WasteSort AI</p>}
+                {!collapsed && <p className="items-center text-lg font-medium transition-colors text-slate-900 dark:text-slate-50">Suchita</p>}
             </div>
             <div className="flex w-full flex-col gap-y-4 overflow-y-auto overflow-x-hidden p-3 [scrollbar-width:_thin]">
                 {navbarLinks.map((navbarLink) => (

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
 import { overviewData } from "@/constants";
 import { Footer } from "@/layouts/footer";
-import wastesortimg from "@/assets/logo.svg";
+import wastesortimg from "@/assets/logo.png";
 
 const DashboardPage = () => {
     const { theme } = useTheme();
@@ -13,11 +13,12 @@ const DashboardPage = () => {
             <h1 className="text-3xl font-bold text-green-700 dark:text-green-300">Dashboard</h1>
             <div className="flex flex-col items-center relative">
                 
-                <img src={wastesortimg} alt="Waste Sorting AI" className="w-80 h-auto " />
-                <h2 className="text-2xl font-semibold text-green-800 dark:text-green-300 mt-4">What is Waste Sort AI?</h2>
+                <img src={wastesortimg} alt="Suchita Platform" className="w-80 h-auto " />
+                <h2 className="text-2xl font-semibold text-green-800 dark:text-green-300 mt-4">What is Suchita?</h2>
                 <p className="text-gray-700 dark:text-white text-center max-w-2xl mt-2">
-                    Waste Sort AI is an advanced AI system designed to classify and manage waste efficiently.
-                    It helps in identifying different types of waste and ensures proper recycling and disposal.
+                    Suchita is a Sustainable Urban Classification Hub Integrated with Technology and AI. 
+                    Our multilingual platform empowers citizens and municipalities to streamline waste management 
+                    through AI-powered segregation, real-time tracking, and automated data logging for efficient recycling.
                 </p>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 ">
