@@ -4,12 +4,16 @@ import { useTranslation } from "@/hooks/use-translation";
 import { Bell, ChevronsLeft, Moon, Search, Sun, Globe } from "lucide-react";
 
 import profileImg from "@/assets/profile-image.jpg";
+import { useAuth } from "@/contexts/auth-context";
+import { useNavigate } from "react-router-dom";
 
 import PropTypes from "prop-types";
 
 export const Header = ({ collapsed, setCollapsed }) => {
     const { theme, setTheme } = useTheme();
     const { language, changeLanguage, supportedLanguages, getCurrentLanguage } = useTranslation();
+    const { user, signout } = useAuth();
+    const navigate = useNavigate();
 
     return (
         <header className="relative z-10 flex h-[60px] items-center justify-between bg-white px-4 shadow-md transition-colors dark:bg-slate-900">
@@ -67,13 +71,19 @@ export const Header = ({ collapsed, setCollapsed }) => {
                 <button className="btn-ghost size-10">
                     <Bell size={20} />
                 </button>
-                <button className="size-10 overflow-hidden rounded-full">
-                    <img
-                        src={profileImg}
-                        alt="profile image"
-                        className="size-full object-cover"
-                    />
-                </button>
+                {!user ? (
+                    <div className="flex items-center gap-x-2">
+                        <button onClick={() => navigate('/sign-in')} className="px-3 py-1 rounded-md text-sm bg-transparent border border-green-600 text-green-600 hover:bg-green-50 dark:hover:bg-green-900">Sign In</button>
+                        <button onClick={() => navigate('/sign-up')} className="px-3 py-1 rounded-md text-sm bg-green-600 text-white hover:bg-green-700">Sign Up</button>
+                    </div>
+                ) : (
+                    <div className="flex items-center gap-x-3">
+                        <button className="size-10 overflow-hidden rounded-full" onClick={() => navigate('/profile-settings')}>
+                            <img src={profileImg} alt="profile image" className="size-full object-cover" />
+                        </button>
+                        <button onClick={() => { signout(); navigate('/'); }} className="px-3 py-1 rounded-md text-sm bg-red-500 text-white hover:bg-red-600">Sign Out</button>
+                    </div>
+                )}
             </div>
         </header>
     );

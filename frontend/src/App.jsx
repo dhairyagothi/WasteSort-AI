@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { ThemeProvider } from "@/contexts/theme-context";
 import { LanguageProvider } from "@/contexts/language-context";
+import { AuthProvider } from "@/contexts/auth-context";
 import Layout from "@/routes/layout";
 import DashboardPage from "@/routes/dashboard/page";
 import Progress from "@/routes/dashboard/progress";
@@ -21,6 +22,7 @@ import Contact from "@/routes/Help/contact";
 import Faq from "@/routes/Help/Faq";
 import SignIn from "./routes/Account/signin";
 import SignUp from "./routes/Account/signup";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
     const router = createBrowserRouter([
@@ -38,11 +40,19 @@ function App() {
                 },
                 {
                     path: "schedule",
-                    element: <Schedule />,
+                    element: (
+                        <ProtectedRoute allowedRoles={["municipality", "citizen"]}>
+                            <Schedule />
+                        </ProtectedRoute>
+                    ),
                 },
                 {
                     path: "real-time-tracking",
-                    element: <Tracking />,
+                    element: (
+                        <ProtectedRoute>
+                            <Tracking />
+                        </ProtectedRoute>
+                    ),
                 },
                 {
                     path: "tutorials",
@@ -50,11 +60,19 @@ function App() {
                 },
                 {
                     path: "ai-verification",
-                    element: <AiVerification />,
+                    element: (
+                        <ProtectedRoute>
+                            <AiVerification />
+                        </ProtectedRoute>
+                    ),
                 },
                 {
                     path: "new-complaint",
-                    element: <Complaint />,
+                    element: (
+                        <ProtectedRoute>
+                            <Complaint />
+                        </ProtectedRoute>
+                    ),
                 },
                 {
                     path: "track-status",
@@ -70,11 +88,19 @@ function App() {
                 },
                 {
                     path: "pickup-history",
-                    element: <PickupHistory />,
+                    element: (
+                        <ProtectedRoute>
+                            <PickupHistory />
+                        </ProtectedRoute>
+                    ),
                 },
                 {
                     path: "personal-reports",
-                    element: <PersonalReports />,
+                    element: (
+                        <ProtectedRoute allowedRoles={["municipality"]}>
+                            <PersonalReports />
+                        </ProtectedRoute>
+                    ),
                 },
                 {
                     path: "profile-settings",
@@ -106,9 +132,11 @@ function App() {
 
     return (
         <ThemeProvider storageKey="theme">
-            <LanguageProvider>
-                <RouterProvider router={router} />
-            </LanguageProvider>
+            <AuthProvider>
+                <LanguageProvider>
+                    <RouterProvider router={router} />
+                </LanguageProvider>
+            </AuthProvider>
         </ThemeProvider>
     );
 }

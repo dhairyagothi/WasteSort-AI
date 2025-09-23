@@ -4,37 +4,73 @@ import { useTheme } from "@/hooks/use-theme";
 import { overviewData } from "@/constants";
 import { Footer } from "@/layouts/footer";
 import wastesortimg from "@/assets/logo.png";
+import { useAuth } from "@/contexts/auth-context";
 
 const DashboardPage = () => {
     const { theme } = useTheme();
+    const { user } = useAuth();
+
+    // Citizen dashboard features
+    const citizenFeatures = (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 ">
+            <Link to="/schedule" className={`card ${theme === "dark" ? "bg-gray-700  hover:bg-gray-600" : "bg-green-200 hover:bg-green-300"} transition p-4 text-green-400 rounded-lg shadow-md`}>
+                <p className="text-lg font-semibold text-green-800 dark:text-green-400">Waste Collection Schedule</p>
+            </Link>
+            <Link to="/real-time-tracking" className={`card ${theme === "dark" ? "bg-gray-700 hover:bg-gray-600" : "bg-green-200 hover:bg-green-300"} transition p-4 rounded-lg shadow-md`}>
+                <p className="text-lg font-semibold text-green-800 dark:text-green-400">Real-Time Tracking</p>
+            </Link>
+            <Link to="/ai-verification" className={`card ${theme === "dark" ? "bg-gray-700 hover:bg-gray-600" : "bg-green-200 hover:bg-green-300"} transition p-4 rounded-lg shadow-md`}>
+                <p className="text-lg font-semibold text-green-800 dark:text-green-400">AI Waste Verification</p>
+            </Link>
+            <Link to="/personal-reports" className={`card ${theme === "dark" ? "bg-gray-700 hover:bg-gray-600" : "bg-green-200 hover:bg-green-300"} transition p-4 rounded-lg shadow-md`}>
+                <p className="text-lg font-semibold text-green-800 dark:text-green-400">Personal Reports</p>
+            </Link>
+        </div>
+    );
+
+    // Municipality dashboard features
+    const municipalityFeatures = (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 ">
+            <Link to="/schedule" className={`card ${theme === "dark" ? "bg-gray-700  hover:bg-gray-600" : "bg-blue-200 hover:bg-blue-300"} transition p-4 text-blue-400 rounded-lg shadow-md`}>
+                <p className="text-lg font-semibold text-blue-800 dark:text-blue-400">Schedule Waste Collection</p>
+            </Link>
+            <Link to="/real-time-tracking" className={`card ${theme === "dark" ? "bg-gray-700 hover:bg-gray-600" : "bg-blue-200 hover:bg-blue-300"} transition p-4 rounded-lg shadow-md`}>
+                <p className="text-lg font-semibold text-blue-800 dark:text-blue-400">Vehicle GPS Tracking</p>
+            </Link>
+            <Link to="/personal-reports" className={`card ${theme === "dark" ? "bg-gray-700 hover:bg-gray-600" : "bg-blue-200 hover:bg-blue-300"} transition p-4 rounded-lg shadow-md`}>
+                <p className="text-lg font-semibold text-blue-800 dark:text-blue-400">Area-wise Reports</p>
+            </Link>
+            <Link to="/ai-verification" className={`card ${theme === "dark" ? "bg-gray-700 hover:bg-gray-600" : "bg-blue-200 hover:bg-blue-300"} transition p-4 rounded-lg shadow-md`}>
+                <p className="text-lg font-semibold text-blue-800 dark:text-blue-400">AI Waste Sorting</p>
+            </Link>
+        </div>
+    );
 
     return (
         <div className={`flex flex-col gap-y-4 p-6 rounded-lg shadow-lg ${theme === "dark" ? "bg-gray-800 text-gray-300" : "bg-white text-gray-900"}`}>
             <h1 className="text-3xl font-bold text-green-700 dark:text-green-300">Dashboard</h1>
             <div className="flex flex-col items-center relative">
-                
-                <img src={wastesortimg} alt="Suchita Platform" className="w-80 h-auto " />
-                <h2 className="text-2xl font-semibold text-green-800 dark:text-green-300 mt-4">What is Suchita?</h2>
-                <p className="text-gray-700 dark:text-white text-center max-w-2xl mt-2">
-                    Suchita is a Sustainable Urban Classification Hub Integrated with Technology and AI. 
-                    Our multilingual platform empowers citizens and municipalities to streamline waste management 
-                    through AI-powered segregation, real-time tracking, and automated data logging for efficient recycling.
-                </p>
+                <div className="w-full max-w-4xl rounded-lg p-6 bg-gradient-to-r from-green-50 to-white dark:from-gray-800 dark:to-gray-900 shadow-md flex flex-col md:flex-row items-center gap-6">
+                    <div className="flex-1 text-center md:text-left">
+                        <h2 className="text-3xl font-extrabold text-green-800 dark:text-green-300">Suchita — Sustainable Urban Classification Hub</h2>
+                        <p className="text-gray-700 dark:text-gray-300 mt-2 max-w-2xl">
+                            AI-powered, multilingual platform for citizens and municipalities to improve waste segregation,
+                            optimize collection routes, and enable data-driven operations.
+                        </p>
+                        {!user && (
+                            <div className="mt-4 flex gap-3 justify-center md:justify-start">
+                                <Link to="/sign-up" className="px-5 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700">Get Started</Link>
+                                <Link to="/sign-in" className="px-4 py-2 border border-green-600 rounded-lg text-green-600">Sign In</Link>
+                            </div>
+                        )}
+                    </div>
+                    <div className="w-48 flex-shrink-0">
+                        <img src={wastesortimg} alt="Suchita" className="w-full h-auto" />
+                    </div>
+                </div>
             </div>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 ">
-                <Link to="/schedule" className={`card ${theme === "dark" ? "bg-gray-700  hover:bg-gray-600" : "bg-green-200 hover:bg-green-300"} transition p-4 text-green-400 rounded-lg shadow-md`}>
-                    <p className="text-lg font-semibold text-green-800 dark:text-green-400">Waste Collection Schedule</p>
-                </Link>
-                <Link to="/real-time-tracking" className={`card ${theme === "dark" ? "bg-gray-700 hover:bg-gray-600" : "bg-green-200 hover:bg-green-300"} transition p-4 rounded-lg shadow-md`}>
-                    <p className="text-lg font-semibold text-green-800 dark:text-green-400">Real-Time Tracking</p>
-                </Link>
-                <Link to="/ai-verification" className={`card ${theme === "dark" ? "bg-gray-700 hover:bg-gray-600" : "bg-green-200 hover:bg-green-300"} transition p-4 rounded-lg shadow-md`}>
-                    <p className="text-lg font-semibold text-green-800 dark:text-green-400">AI Waste Verification</p>
-                </Link>
-                <Link to="/personal-reports" className={`card ${theme === "dark" ? "bg-gray-700 hover:bg-gray-600" : "bg-green-200 hover:bg-green-300"} transition p-4 rounded-lg shadow-md`}>
-                    <p className="text-lg font-semibold text-green-800 dark:text-green-400">Personal Reports</p>
-                </Link>
-            </div>
+            {/* Role-based dashboard features */}
+            {user?.role === "municipality" ? municipalityFeatures : citizenFeatures}
             <div className={`card col-span-1 md:col-span-2 lg:col-span-4 ${theme === "dark" ? "bg-gray-700 shadow-lg" : "bg-white shadow-lg"} p-4 rounded-lg mt-6`}>
                 <h3 className="text-xl font-semibold text-green-800 dark:text-green-400">Overview</h3>
                 <ResponsiveContainer width="100%" height={300}>
